@@ -845,3 +845,12 @@ void _delay_ms(uint32_t t)
 		t--;
 	}
 }
+
+int LCDscroll(uint8_t x, uint8_t y, char *msg, int msgsize, int scrollPosition)
+{
+    if(scrollPosition >= msgsize)
+        scrollPosition = 0;
+    LCDdrawstring(x, y, &msg[scrollPosition]);
+    return ++scrollPosition;
+}
+
